@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Interest Calculator</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	</head>
+	<body>
+		<h1 style="text-align:center;padding-top:100px">Interest Calculator</h1>
+		<div class="container">
+			<form method="POST" action="/">
+				{% csrf_token %}
+				<div class="form-group" style="padding-top:30px">
+					<label for="exampleInputEmail1">Amount</label>
+					<input type="text" class="form-control" name="Amount" aria-describedby="emailHelp" placeholder="Enter Principal Amount">
+				</div>
+				<div class="form-group" style="padding-top:30px">
+					<label for="exampleInputEmail1">Interest</label>
+					<input type="text" class="form-control" name="Interest" aria-describedby="emailHelp" placeholder="Enter Rate of Interest">
+				</div>
+				<div style="padding-top:35px">
+					<label for="exampleInputEmail1">Type of Interest</label>
+					<select class="custom-select"  name="Time">
+						<option selected>Type of Interest</option>
+						<option value="1">Simple Interest </option>
+						<option value="2">Compound Interest</option>
+					</select>
+				</div>
+				<div class="form-group" style="padding-top:40px">
+					<label for="exampleInputEmail1">Period</label>
+					<input type="Number" class="form-control" name="period" aria-describedby="emailHelp" placeholder="Enter Period Time">
+				</div>
+				<div style="padding-top:45px">
+					<label for="exampleInputEmail1">Time of Interest Calculation</label>
+					<select class="custom-select"  name="Choice">
+						<option selected>Time of Interest Calculation</option>
+						<option value="1">Annually</option>
+						<option value="2">Half-Yearly</option>
+						<option value="3">Quarterly</option>
+						<option value="4">Monthly</option>
+					</select>
+				</div>
+				<br><br>
+				<button type="submit" class="btn btn-outline-success btn-lg btn-block">Submit</button>
+			</form>
+			<br><br>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">SLNO</th>
+						<th scope="col">Amount</th>
+						<th scope="col">Rate of Intrest</th>
+						<th scope="col">Mode of Interest</th>
+					</tr>
+				</thead>
+				<tbody>
+					{%for i in show%}
+					<tr>
+						<th scope="row">1</th>
+						<td>₹{{i}}</td>
+						<td>{{rate_of_interest}}%</td>
+						<td>{{mode}}</td>
+					</tr>
+					{%endfor%}
+					
+				</tbody>
+			</table>
+			<br><br><br>
+			
+			
+			
+			
+		</div>
+	</body>
+</html>
